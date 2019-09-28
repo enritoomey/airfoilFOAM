@@ -1,0 +1,40 @@
+
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      changeDictionaryDict;
+}
+
+boundary
+{
+    inlet
+    {
+        type patch;
+        physicalType patch;
+    }
+    outlet
+    {
+        type patch;
+        physicalType patch;
+    }
+    airfoil
+    {
+        type wall;
+        physicalType wall;
+    }
+    frontAndBack
+    {
+        type empty;
+        physicalType empty;
+    }
+    topAndBottom
+    {
+        type            patch;
+        physicalType    patch;
+    }
+
+}
+
