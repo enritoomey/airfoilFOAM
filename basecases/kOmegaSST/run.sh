@@ -9,6 +9,7 @@ pid=$!
 sleep 5
 # Plot residuals
 gnuplot residuals - &
+pid2=$!
 #------------------------------------------------------------------------------
 wait $pid
-kill 0
+kill $pid2
