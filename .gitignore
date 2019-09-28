@@ -1,0 +1,12 @@
+.Xauthority
+.bash_history
+.cache/
+.config/
+.gmshrc
+.gnuplot-wxt
+.idea/
+.vim/
+.viminfo
+_pycache__/*
+log
+venv/
