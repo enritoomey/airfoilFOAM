@@ -264,8 +264,8 @@ def parse_arguments():
                         help="list of aoa: start, end, step")
     parser.add_argument("-o", "--output", type=str, action='store', required=True, help='destination directory')
     parser.add_argument("--with-bl", action="store_true", help="Use mesh with BL")
-    parser.add_argument("--n-processors", type=int, default=0, choices=(0, 2, 4, 8),
-                        help="Number of cores. By default 0, that mean, no paralelization is done")
+    parser.add_argument("--n-processors", type=int, default=1, choices=(1, 2, 4, 8),
+                        help="Number of cores. By default 1, that mean, no paralelization is done")
     parser.add_argument('-d', '--docker-config', default=None, help='json file containing openfoams docker'
                                                              'container configuration')
     parser.add_argument('-v', '--verbose', action='count', default=0, help='be more verbose')
@@ -335,7 +335,7 @@ if __name__ == "__main__":
                     logger.info('exiting script')
                     sys.exit(1)
                 container.start()
-                if args.n_processors > 0:
+                if args.n_processors > 1:
                     runfile = 'run_parallel.sh {}'.format(args.n_processors)
                 else:
                     runfile = 'run.sh'
@@ -351,7 +351,7 @@ if __name__ == "__main__":
                     logger.debug(line)
                 container.stop()
             else:
-                if args.n_processors > 0:
+                if args.n_processors > 1:
                     command = './run_parallel.sh {}'.format(args.n_processors)
                 else:
                     command = './run.sh'
